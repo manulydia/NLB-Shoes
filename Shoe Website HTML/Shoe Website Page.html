@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checkout</title>
+</head>
+<body>
+  <h1>Checkout</h1>
+
+  <h2>Billing Information</h2>
+  <form>
+    <label>Full Name: <input type="text" name="billing_name"></label><br>
+    <label>Address: <input type="text" name="billing_address"></label><br>
+    <label>City: <input type="text" name="billing_city"></label><br>
+    <label>State/Province: <input type="text" name="billing_state"></label><br>
+    <label>Zip/Postal Code: <input type="text" name="billing_zip"></label><br>
+    <label>Country: <input type="text" name="billing_country"></label><br>
+  </form>
+
+  <h2>Shipping Information</h2>
+  <form>
+    <label>Full Name: <input type="text" name="shipping_name"></label><br>
+    <label>Address: <input type="text" name="shipping_address"></label><br>
+    <label>City: <input type="text" name="shipping_city"></label><br>
+    <label>State/Province: <input type="text" name="shipping_state"></label><br>
+    <label>Zip/Postal Code: <input type="text" name="shipping_zip"></label><br>
+    <label>Country: <input type="text" name="shipping_country"></label><br>
+  </form>
+
+  <h3>Same as billing information?</h3>
+  <form>
+    <input type="checkbox" name="same_as_billing" value="yes"> Yes
+  </form>
+
+  <button type="button" onclick="location.href='Shopping Cart Sketch.html'">Place Order</button>
+</body>
+</html>

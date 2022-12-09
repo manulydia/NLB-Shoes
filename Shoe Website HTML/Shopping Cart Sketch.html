@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shopping Cart</title>
+  <script>
+    function validateForm() {
+      // Get the values of the email, billing address, and shipping address fields
+      var email = document.getElementById("email").value;
+      var billingAddress = document.getElementById("billing-address").value;
+      var shippingAddress = document.getElementById("shipping-address").value;
+
+      // Check if the email is a valid email address
+      if (!email.match(/^[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,}$/)) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+
+      // Check if the billing address and shipping address are not empty
+      if (billingAddress === "" || shippingAddress === "") {
+        alert("Please enter a billing and shipping address.");
+        return false;
+      }
+
+      // If all the fields are valid, submit the form
+      return true;
+    }
+
+    // Add an event listener to the form to handle form submission
+    document.getElementById("checkout-form").addEventListener("submit", function(event) {
+      // Call the validateForm function to validate the form
+      if (!validateForm()) {
+        // If the form is invalid, prevent the default form submission behavior
+        event.preventDefault();
+      }
+    });
+
+    // Add a payment gateway to process payments
+    var paymentGateway = new PaymentGateway();
+
+    // Add an event listener to the "pay" button to handle payment
+    document.getElementById("pay-button").addEventListener("click", function() {
+      // Call the payment gateway's pay method to process the payment
+      paymentGateway.pay(totalPrice);
+    });
+  </script>
+</head>
+<body>
+  <h1>Shopping Cart</h1>
+  <h2>Your Cart:</h2>
+  <ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+  <button type="button" onclick="location.href='Input payment.html'">Proceed to Payment</button>
+</body>
+</html>

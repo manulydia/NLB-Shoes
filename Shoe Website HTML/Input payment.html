@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Payment Page</title>
+  </head>
+  <body>
+    <h1>Payment Options</h1>
+    <form>
+      <h2>Select Payment Type:</h2>
+      <input type="radio" name="payment" value="credit_card"> Credit Card<br>
+      <div id="credit_card_fields" style="display: change;">
+        <label for="credit_card_number">Card Number:</label><br>
+        <input type="text" id="credit_card_number" name="credit_card_number"><br>
+        <label for="credit_card_expiration">Expiration Date:</label><br>
+        <input type="text" id="credit_card_expiration" name="credit_card_expiration"><br>
+        <label for="credit_card_cvv">CVV:</label><br>
+        <input type="text" id="credit_card_cvv" name="credit_card_cvv"><br>
+      </div>
+      <input type="radio" name="payment" value="debit_card"> Debit Card<br>
+      <div id="debit_card_fields" style="display: change;">
+        <label for="debit_card_number">Card Number:</label><br>
+        <input type="text" id="debit_card_number" name="debit_card_number"><br>
+        <label for="debit_card_expiration">Expiration Date:</label><br>
+        <input type="text" id="debit_card_expiration" name="debit_card_expiration"><br>
+        <label for="debit_card_cvv">CVV:</label><br>
+        <input type="text" id="debit_card_cvv" name="debit_card_cvv"><br>
+      </div>
+      <input type="radio" name="payment" value="paypal"> Paypal<br>
+      <div id="paypal_fields" style="display: change;">
+        <label for="paypal_email">Email:</label><br>
+        <input type="text" id="paypal_email" name="paypal_email"><br>
+        <label for="paypal_password">Password:</label><br>
+        <input type="password" id="paypal_password" name="paypal_password"><br>
+      </div>
+      <input type="radio" name="payment" value="apple_pay"> Apple Pay<br>
+      <input type="radio" name="payment" value="google_pay"> Google Pay<br>
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+
+    <script>
+      // Show the appropriate input fields when a payment type is selected
+      var paymentTypeInputs = document.getElementsByName('payment');
+      for (var i = 0; i < paymentTypeInputs.length; i++) {
+        paymentTypeInputs[i].addEventListener('change', function() {
+          var selectedPaymentType = this.value
