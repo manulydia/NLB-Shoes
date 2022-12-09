@@ -22,6 +22,7 @@
       <input type="password" name="cpassword" required placeholder="confirm password" class="box">
       <input type="submit" name="submit" class="btn" value="register now">
       <p>already have an account? <a href="login.php">login now</a></p>
+      <p>continue as a guest? <a href="">start shopping</a></p>
    </form>
 
 </div>
