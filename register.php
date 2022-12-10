@@ -1,3 +1,31 @@
+<?php
+
+include 'config.php';
+
+// Submit information and create account
+if(isset($_POST['submit'])){
+
+   $name = mysqli_real_escape_string($conn, $_POST['name']);
+   $email = mysqli_real_escape_string($conn, $_POST['email']);
+   $pass = mysqli_real_escape_string($conn, md5($_POST['password']));
+   $cpass = mysqli_real_escape_string($conn, md5($_POST['cpassword']));
+
+   $select = mysqli_query($conn, "SELECT * FROM `user_form` WHERE email = '$email' AND password = '$pass'") or die('query failed');
+
+   // Check if account exists already
+   if(mysqli_num_rows($select) > 0){
+      $message[] = 'user already exist!';
+   }else{
+      mysqli_query($conn, "INSERT INTO `user_form`(name, email, password) VALUES('$name', '$email', '$pass')") or die('query failed');
+      $message[] = 'registered successfully!';
+      header('location:login.php');
+   }
+
+}
+
+?>
+
+<!-- START OF HTML ------------------------------------>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +39,14 @@
 
 </head>
 <body>
+
+<?php
+if(isset($message)){
+   foreach($message as $message){
+      echo '<div class="message" onclick="this.remove();">'.$message.'</div>';
+   }
+}
+?>
    
 <div class="form-container">
 
@@ -22,7 +58,7 @@
       <input type="password" name="cpassword" required placeholder="confirm password" class="box">
       <input type="submit" name="submit" class="btn" value="register now">
       <p>already have an account? <a href="login.php">login now</a></p>
-      <p>continue as a guest? <a href="">start shopping</a></p>
+      <p>want to continue as a guest? <a href="index.php">start shopping</a></p>
    </form>
 
 </div>
